@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Birth Celebration</title>
+        <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}" />
+        <link rel="stylesheet" type="text/css" href="/static/style.css" />
+        <script type="text/javascript" src="/static/jquery-1.7.1.min.js"></script>
+    </head>
+    <body>
+        <div id="content">
+            {% block body %}{% endblock %}
+        </div>
+        <div id="nav">
+            Navigation:<br />
+            <ul>
+                {% block nav %}{% endblock %}
+                <li><a href="{{url_for('main')}}">index</a></li>
+                <li><a href="/about/">about</a></li>
+                <li><a href="/contact/">contact</a></li>
+                <hr id="nav"/>
+                {% if 'username' in session %}
+                <li><a href="{{url_for('music')}}">music</a></li>
+                <li><a href="{{url_for('login')}}">logout</a>
+                {% else %}
+                <li><a href="{{url_for('login')}}">login</a>
+                {% endif %}
+            </ul>
+        </div>
+        <div id="flashed">
+        {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+        {% endwith %}
+        </div>
+             <div align="center" style="margin:15px 0px 0px 0px"> <noscript> <div align="center" style="width:140px;border:1px solid #ccc;
+                  background: #D606A2; 	color: #F9F9FF;font-weight:bold;font-size:12px;"> <a style="text-decoration: none; color:#F9F9FF;" 
+		  href="http://mycountdown.org/Special_Day/	Birthday/">Birthday Countdown</a></div> </noscript> <script type="text/javascript" 
+                  src="http://mycountdown.org/countdown.php? 				  	   cp3_Hex=0F0200&cp2_Hex=D606A2&cp1_Hex=F9F9FF&ham=0&img=&hbg=0&hfg=0&sid=0&fwdt=150&lab=1&text1=Birthday&text2=Birthday&group=Special Day&countdown=Birthday&widget_number=3010&event_time=1338372000&timezone=America/New_York"></script> </div> 
+
+       <div style="background-image: url(/static/Topsy_Turvey_Birthday_Cake_by_pinkcakebox.jpg); height: 600px; width: 1330px; border: 4px solid black;"> </div>
+    </body>
+</html>
